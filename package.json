@@ -10,7 +10,6 @@
   },
   "author": "xuliuzhu",
   "license": "ISC",
-
   "devDependencies": {
     "babel-core": "^6.10.4",
     "babel-eslint": "^7.1.1",

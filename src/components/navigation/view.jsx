@@ -1,97 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BackTop, Breadcrumb, Icon, Button } from 'antd';
-import { Link } from 'react-router';
-
-import Welcome from './welcome';
-import Sider from './sider';
 import styles from './style.css';
 
-// const confirm = Modal.confirm;
-// const showConfirm = (dispatch) => {
-//   confirm({
-//     title: '确定要退出吗',
-//     onOk() {
-//       dispatch({ type: 'user_my_account_log_out' });
-//     },
-//     onCancel() {},
-//   });
-// };
-class Navigation extends React.Component {
-  componentWillMount() {
-   // this.props.dispatch({ type: 'nav_init_user_info' });
-  }
-  render() {
-    // if (this.props.load)
-    const { linkList, children, current, menus } = this.props;
-    const routerMatchList = linkList.filter(
-      ({ link }) => (link === '/' || `${current}/`.startsWith(`${link}/`)))
-      .sort((item1, item2) => item1.link.length > item2.link.length);
-    // document.title = [...routerMatchList].reverse()[0]
-    //   ?
-    //   [...routerMatchList].reverse()[0].name : '';
-    return (
-      <div className={styles.antLayoutAside}>
-        <aside
-          className={styles.antLayoutSider}
-          style={{ width: this.props.expandable === 'expand' ? '180px' : '0px' }}
-        >
-          <div className={styles.antLayoutLogo} >
-            <Link to="/">
-              商品信息中心
-            </Link>
-          </div>
-          <Sider current={current} menus={menus} routerMatchList={routerMatchList} />
-        </aside>
+const bg = {
+  a: { backgroundColor: '#ccc' },
+  b: { backgroundColor: '#ebf8f2' },
+  c: { backgroundColor: '#0e77ca' },
+  d: { backgroundColor: '#cfefdf' },
+};
 
-        <div
-          className={styles.antLayoutMain}
-          style={{ marginLeft: this.props.expandable === 'expand' ? '180px' : '0px' }}
-        >
-          <div className={styles.antLayouttop}>
-            <Button
-              type="ghost"
-              shape="circle-outline"
-              className={styles.expandBtn}
-              onClick={() => (
-                this.props.dispatch(
-                  {
-                    type: 'nav_expand',
-                    value: this.props.expandable === 'expand' ? 'close' : 'expand',
-                  })
-              )}
-            ><Icon
-              type="swap"
-              style={{ fontSize: '15px' }}
-            /></Button>
-            <Breadcrumb className={styles.top_margin}>
-              {
-                routerMatchList
-                  .map(({ link, crubName, name }) => (
-                    <Breadcrumb.Item key={link}>
-                      <Link className={styles.linkcolor} to={link}>{crubName || name}</Link>
-                    </Breadcrumb.Item>
-                  ))
-              }
-            </Breadcrumb>
+class Navigation extends React.Component {
+  render() {
+    return (
+      <div className={styles.antLayoutBody}>
+        {/* 头部 */}
+        <div className={styles.antLayoutTop} >
+          my company name
+        </div>
+        {/* 主体部分 */}
+        <div className={styles.antLayoutContent}>
+          {/* 选择门 */}
+          <div style={bg.b} className={styles.chooseDoor}>
+            <p>这里是门</p>
           </div>
-          <div>
-            <div className={styles.antLayoutContent}>
-              <BackTop />
-              {
-                children || <Welcome />
-              }
+          {/* 显示区域 */}
+          <div style={bg.b} className={styles.mainShow}>
+            <div style={bg.c} className={styles.showEvery}>
+              <p>这里是显示区域</p>
+            </div>
+            <div style={bg.d} className={styles.filters}>
+              <p>这里是选择条件</p>
             </div>
           </div>
         </div>
+        {/* 底部 */}
+        <div className={styles.bottom}>
+          <p>这是底部</p>
+        </div>
       </div>
-
     );
-    // return (
-    //   <div style={{ textAlign: 'center' }}>
-    //     <Spin size="large" />
-    //   </div>
-    // );
   }
 }
 
