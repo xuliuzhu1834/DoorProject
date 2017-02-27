@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import assign from 'object-assign';
+import LeftPart from './leftPart';
+import Filters from './filters';
 import styles from './style.css';
+
+const bgImages = require.context('./images/bg');
 
 const bg = {
   a: { backgroundColor: '#ccc' },
@@ -9,7 +14,11 @@ const bg = {
   d: { backgroundColor: '#cfefdf' },
 };
 
-class Navigation extends React.Component {
+class Navigation extends Component {
+  constructor(props) {
+    super(props);
+    props.dispatch({ type: 'nav_init' });
+  }
   render() {
     return (
       <div className={styles.antLayoutBody}>
@@ -20,16 +29,15 @@ class Navigation extends React.Component {
         {/* 主体部分 */}
         <div className={styles.antLayoutContent}>
           {/* 选择门 */}
-          <div style={bg.b} className={styles.chooseDoor}>
-            <p>这里是门</p>
-          </div>
-          {/* 显示区域 */}
-          <div style={bg.b} className={styles.mainShow}>
-            <div style={bg.c} className={styles.showEvery}>
-              <p>这里是显示区域</p>
+          <LeftPart {...this.props} />
+          <div className={styles.mainShow}>
+            {/* 显示结果 */}
+            <div className={styles.showEvery} height="600px">
+              <img alt="wall" src={bgImages('./墙1.png')} style={{ height: '600px' }} />
             </div>
-            <div style={bg.d} className={styles.filters}>
-              <p>这里是选择条件</p>
+            {/* 条件 */}
+            <div className={styles.filters}>
+              <Filters {...this.props} />
             </div>
           </div>
         </div>
@@ -41,15 +49,8 @@ class Navigation extends React.Component {
     );
   }
 }
-
 Navigation.propTypes = {
-  /* eslint  react/forbid-prop-types: 0 */
-  dispatch: React.PropTypes.func,
-  children: React.PropTypes.element,
-  current: React.PropTypes.string,
-  linkList: React.PropTypes.array,
-  menus: React.PropTypes.array,
-  expandable: React.PropTypes.string,
+  dispatch: PropTypes.func,
 };
 
 const mapStateToProps = state => state.navigation;

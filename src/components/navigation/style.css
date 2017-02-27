@@ -22,7 +22,44 @@
 
 .chooseDoor{
     flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
+.doorHeader{
+    width: 100%;
+    text-align: center;
+    background-color: #108ee9;
+    padding: 10px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.doorImage{
+    text-align: center;
+    border-radius: 4px;
+    margin: 6px;
+    padding: 20px 0;
+    box-shadow: 0 0 2px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0 0 2px #333333;
+}
+.doorImageChenck{
+    text-align: center;
+    border: 3px solid #f04134;
+    border-radius: 4px;
+    margin: 6px;
+    padding: 20px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0 0 10px #333333;
+}
+.doorImage:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0 0 10px #333333;
+}
+
 .mainShow{
     flex: 10;
     margin: 2%;
@@ -33,9 +70,42 @@
 .showEvery{
     flex: 10;
     margin-bottom: 1%;
+    text-align: center;
 }
 .filters{
-flex: 2;
+    margin: 10px;
+}
+.filtersTab{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: auto;
+    max-width: 1100px;
+}
+
+.filterImage{
+    text-align: center;
+    border-radius: 4px;
+    margin: 2px;
+    padding: 3px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0 0 2px #333333;
+}
+.filterImageCheck{
+    text-align: center;
+    border: 2px solid #f04134;
+    border-radius: 4px;
+    margin: 2px;
+    padding: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0 0 10px #333333;
+}
+.filterImage:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0 0 10px #333333;
 }
 .bottom {
     padding: 18px 0;
@@ -45,4 +115,5 @@ flex: 2;
     flex-direction: column;
     align-items: center;
 }
+
 
