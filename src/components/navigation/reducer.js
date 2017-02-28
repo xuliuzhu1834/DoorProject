@@ -5,6 +5,7 @@ import assign from 'object-assign';
 
 const defaultState = {
   defaultdoorSource: [],
+  defaulthandSource: [],
   defaultwallSource: [],
   doorSource: [
     {
@@ -34,6 +35,20 @@ const defaultState = {
       text: 'Background Model 3',
     },
   ],
+  handSource: [
+    {
+      link: '门锁1.png',
+      text: 'Lock Model 1',
+    },
+    {
+      link: '门锁2.png',
+      text: 'Lock Model 2',
+    },
+    {
+      link: '门锁3.png',
+      text: 'Lock Model 3',
+    },
+  ],
 };
 
 export default (state = defaultState, action) => {
@@ -44,6 +59,8 @@ export default (state = defaultState, action) => {
         defaultdoorSource: state.doorSource.map(v => assign({}, v, { status: false })),
         wallSource: state.wallSource.map(v => assign({}, v, { status: false })),
         defaultwallSource: state.wallSource.map(v => assign({}, v, { status: false })),
+        handSource: state.handSource.map(v => assign({}, v, { status: false })),
+        defaulthandSource: state.handSource.map(v => assign({}, v, { status: false })),
       });
     case 'nav_commit':
       return assign({}, state, {

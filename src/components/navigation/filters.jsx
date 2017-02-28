@@ -11,7 +11,8 @@ import styles from './style.css';
 
 const TabPane = Tabs.TabPane;
 const bgImages = require.context('./images/bg');
-
+const doorsImages = require.context('./images/doors');
+const locksImages = require.context('./images/hands');
 const tabsProps = {
   type: 'small',
   renderTabBar: 'filters',
@@ -22,6 +23,10 @@ const Filters = ({
   dispatch,
   defaultwallSource,
   wallSource,
+  defaultdoorSource,
+  doorSource,
+  defaulthandSource,
+  handSource,
 }) => (
   <Tabs {...tabsProps} >
     <TabPane tab="场景选择" key="1" className={styles.filtersTab}>
@@ -45,19 +50,52 @@ const Filters = ({
           />
         ))
       }
+    </TabPane>
+    <TabPane tab="色板选择" key="2" className={styles.filtersTab}>
       {
-        new Array(8).fill(0).map((v, i) => (
+        doorSource.map((v, i) => (
           <ImageCheck
             key={i}
-            link={bgImages('./墙1.png')}
-            text={'Model static'}
-            status={false}
+            link={doorsImages(`./${v.link}`)}
+            text={v.text}
+            status={v.status}
+            onClick={() => dispatch(
+              commit(
+                'doorSource',
+                [
+                  ...defaultdoorSource.slice(0, i),
+                  assign({}, v, { status: !v.status }),
+                  ...defaultdoorSource.slice(i + 1),
+                ],
+              ),
+            )}
+          />
+        ))
+      }
+
+    </TabPane>
+    <TabPane tab="锁具选择" key="3" className={styles.filtersTab}>
+      {
+        handSource.map((v, i) => (
+          <ImageCheck
+            key={i}
+            link={locksImages(`./${v.link}`)}
+            text={v.text}
+            status={v.status}
+            onClick={() => dispatch(
+              commit(
+                'handSource',
+                [
+                  ...defaulthandSource.slice(0, i),
+                  assign({}, v, { status: !v.status }),
+                  ...defaulthandSource.slice(i + 1),
+                ],
+              ),
+            )}
           />
         ))
       }
     </TabPane>
-    <TabPane tab="色板选择" key="2">Content of Tab Pane 3</TabPane>
-    <TabPane tab="锁具选择" key="3">Content of Tab Pane 1</TabPane>
     <TabPane tab="猫眼选择" key="4">Content of Tab Pane 2</TabPane>
   </Tabs>
 );
@@ -68,6 +106,10 @@ Filters.propTypes = {
   dispatch: PropTypes.func,
   wallSource: PropTypes.array,
   defaultwallSource: PropTypes.array,
+  doorSource: PropTypes.array,
+  defaultdoorSource: PropTypes.array,
+  defaulthandSource: PropTypes.array,
+  handSource: PropTypes.array,
 };
 
 export default Filters;

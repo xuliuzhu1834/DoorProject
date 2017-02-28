@@ -14,7 +14,6 @@
 }
 .antLayoutContent {
     padding:15px;
-    min-height: 680px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -77,16 +76,15 @@
 }
 .filtersTab{
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: flex-start;
     overflow: auto;
-    max-width: 1100px;
 }
 
 .filterImage{
     text-align: center;
     border-radius: 4px;
-    margin: 2px;
+    margin: 8px;
     padding: 3px;
     box-shadow: 0 0 2px rgba(0,0,0,0.45);
     -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.45);
@@ -96,7 +94,7 @@
     text-align: center;
     border: 2px solid #f04134;
     border-radius: 4px;
-    margin: 2px;
+    margin: 8px;
     padding: 3px;
     box-shadow: 0 0 10px rgba(0,0,0,0.45);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.45);

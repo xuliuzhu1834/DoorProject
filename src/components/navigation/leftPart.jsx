@@ -13,7 +13,7 @@ const LeftPart = ({
   defaultdoorSource,
   doorSource,
 }) => (
-  <div style={{ maxHeight: '600px' }} className={styles.chooseDoor}>
+  <div style={{ maxHeight: '830px' }} className={styles.chooseDoor}>
     <div className={styles.doorHeader}> 门款选择 </div>
     <div style={{ overflow: 'auto', width: '100%' }}>
       {
@@ -33,16 +33,6 @@ const LeftPart = ({
                 ],
               ),
             )}
-          />
-        ))
-      }
-      {
-        new Array(8).fill(0).map((v, i) => (
-          <Doors
-            key={i}
-            link={doorsImages('./门1.png')}
-            text={'Model static'}
-            status={false}
           />
         ))
       }

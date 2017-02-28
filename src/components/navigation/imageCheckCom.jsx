@@ -19,7 +19,7 @@ const LeftCop = ({
     <img
       alt="example"
       src={link}
-      style={{ height: '50px' }}
+      style={{ height: '100px' }}
     />
     <hr color="#ecf6fd" height="2px" />
     <h5 style={{ marginTop: '3px' }}>{text}</h5>
