@@ -2,7 +2,6 @@
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const webpack = require('webpack');
-
 module.exports = {
   entry: {
     app: ['./src/entry.jsx'],
@@ -47,7 +46,7 @@ module.exports = {
         env: {
           CURRENT_VERSION: JSON.stringify(process.env.CURRENT_VERSION || '内部测试'),
           NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-         // BASE_URI: JSON.stringify(process.env.BASE_URI || '/index.php/Home'),
+          // BASE_URI: JSON.stringify(process.env.BASE_URI || 'http://custom-door.dev'),
         },
       },
     }),

@@ -70,6 +70,33 @@ export default (state = defaultState, action) => {
       return assign({}, state, {
         expandable: action.value,
       });
+    case '@async/LOAD':
+      switch (action.payload.key) {
+        case 'nav_init':
+          return assign({}, state, { load: true });
+        default:
+          return state;
+      }
+    case '@async/LOAD_FAIL':
+      switch (action.payload.key) {
+        case 'nav_init':
+          console.log(action);
+          return assign({}, state, { load: false });
+        default:
+          return state;
+      }
+    /* eslint no-case-declarations:0 */
+    case '@async/LOAD_SUCCESS':
+      const data = action.payload;
+      switch (action.payload.key) {
+        case 'nav_init':
+          console.log(data);
+          return assign({}, state, {
+            load: false,
+          });
+        default:
+          return state;
+      }
     default:
       return state;
   }

@@ -33,20 +33,15 @@ function showMessage(msg, fn = () => {}) {
 export default (url, args = {}) => (
   fetch(url, Object.assign({
     credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-      Token: localStorage.getItem('token') || 'test',
-      ClientId: localStorage.getItem('clientId') || 'test',
-      SiteUID: localStorage.getItem('siteUID') || 'test',
-    },
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'text/plain',
   }, args)))
   .then((res) => {
     const { status } = res;
-    if (status === 404) return hashHistory.push('/error/404');
-    else if (status === 500) return hashHistory.push('/error/500');
-    else if (status > 300) {
+    if (status > 300) {
       showMessage('服务器响应出错,请尝试 刷新 重试,或者联系开发人员需求帮助  _(:3 」∠)_');
       throw new Error(status);
     }
-    return res.json();
+    console.log(res);
+    return res.text(); // TODO: stander should be json
   });
