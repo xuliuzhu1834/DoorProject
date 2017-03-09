@@ -6,3 +6,9 @@ export const initSer = () => (
   })
     .then(res => res)
 );
+export const filters = id => (
+  fetch(`/attribute/list_attribute?category_id=${id}`, {
+    method: 'get',
+  })
+    .then(res => res)
+);

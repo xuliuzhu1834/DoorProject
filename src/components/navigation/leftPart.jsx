@@ -12,6 +12,7 @@ const LeftPart = ({
   dispatch,
   defaultdoorSource,
   doorSource,
+  cates,
 }) => (
   <div style={{ maxHeight: '830px' }} className={styles.chooseDoor}>
     <div className={styles.doorHeader}> 门款选择 </div>
@@ -32,9 +33,24 @@ const LeftPart = ({
                   ...defaultdoorSource.slice(i + 1),
                 ],
               ),
-            )}
+            )
+              .then(dispatch({ type: 'nav_filter', id: 1 }))
+            }
           />
         ))
+      }
+      {
+        console.log(cates)
+      }
+      {
+        cates ? cates.map((v, i) => (
+          <Doors
+            key={i}
+            link={v.path}
+            text={v.name}
+            status={v.status}
+          />
+        )) : null
       }
     </div>
   </div>
@@ -44,6 +60,7 @@ LeftPart.propTypes = {
   dispatch: PropTypes.func,
   doorSource: PropTypes.array,
   defaultdoorSource: PropTypes.array,
+  cates: PropTypes.array,
 };
 
 export default LeftPart;

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import LeftPart from './leftPart';
 import Filters from './filters';
 import styles from './style.css';
-import { initData } from './action';
 
 const bgImages = require.context('./images/bg');
 
@@ -11,7 +10,6 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     props.dispatch({ type: 'nav_init' });
-    props.dispatch(initData());
   }
   render() {
     return (
@@ -36,9 +34,9 @@ class Navigation extends Component {
           </div>
         </div>
         {/* 底部 */}
-        <div className={styles.bottom}>
-          <p>这是底部</p>
-        </div>
+        {/*<div className={styles.bottom}>*/}
+          {/*<p>这是底部</p>*/}
+        {/*</div>*/}
       </div>
     );
   }

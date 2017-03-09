@@ -34,14 +34,19 @@
     color: #fff;
     margin-bottom: 10px;
 }
+.imageHeight{
+    height: 90%;
+}
 .doorImage{
     text-align: center;
     border-radius: 4px;
-    margin: 6px;
+    border: 1px solid #f5317f;
+    margin: 0px 0 10px 0;
     padding: 20px 0;
-    box-shadow: 0 0 2px rgba(0,0,0,0.45);
-    -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.45);
-    -moz-box-shadow: 0 0 2px #333333;
+    height: 230px;
+    box-shadow: 0 4px 0 #d73435;
+    -webkit-box-shadow: 0 4px 0 #d73435;
+    -moz-box-shadow: 0 4px 0 #d73435;
 }
 .doorImageChenck{
     text-align: center;
@@ -49,14 +54,17 @@
     border-radius: 4px;
     margin: 6px;
     padding: 20px 0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.45);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.45);
-    -moz-box-shadow: 0 0 10px #333333;
+    height: 230px;
+    box-shadow: 0 4px 0 #d73435;
+    -webkit-box-shadow: 0 4px 0 #d73435;
+    -moz-box-shadow: 0 4px 0 #d73435;
 }
 .doorImage:hover{
-    box-shadow: 0 0 10px rgba(0,0,0,0.45);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.45);
-    -moz-box-shadow: 0 0 10px #333333;
+    box-shadow: 0 4px 0 #d73435;
+    -webkit-box-shadow: 0 4px 0 #d73435;
+    -moz-box-shadow: 0 4px 0 #d73435;
+    height: 260px;
+    transition: height 0.5s;
 }
 
 .mainShow{
@@ -86,6 +94,7 @@
     border-radius: 4px;
     margin: 8px;
     padding: 3px;
+    width: 120px;
     box-shadow: 0 0 2px rgba(0,0,0,0.45);
     -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.45);
     -moz-box-shadow: 0 0 2px #333333;
@@ -104,6 +113,8 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.45);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.45);
     -moz-box-shadow: 0 0 10px #333333;
+    width: 150px;
+    transition: width 0.7s;
 }
 .bottom {
     padding: 18px 0;

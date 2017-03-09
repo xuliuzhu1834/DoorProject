@@ -42,6 +42,5 @@ export default (url, args = {}) => (
       showMessage('服务器响应出错,请尝试 刷新 重试,或者联系开发人员需求帮助  _(:3 」∠)_');
       throw new Error(status);
     }
-    console.log(res);
-    return res.text(); // TODO: stander should be json
+    return res.json(); // TODO: stander should be json
   });
