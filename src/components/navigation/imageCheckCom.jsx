@@ -21,8 +21,7 @@ const LeftCop = ({
       src={link}
       className={classStyle.imageHeight}
     />
-    <hr color="#ecf6fd" height="2px" />
-    <h5 style={{ marginTop: '3px' }}>{text}</h5>
+    <h5 style={{ marginTop: '3px', color: '#999' }}>{text}</h5>
   </div>
 );
 
