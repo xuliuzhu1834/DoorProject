@@ -10,7 +10,6 @@ import styles from './style.css';
 const doorsImages = require.context('./images/doors');
 const LeftPart = ({
   dispatch,
-  defaultdoorSource,
   doorSource,
   cates,
 }) => (
@@ -28,9 +27,11 @@ const LeftPart = ({
               commit(
                 'doorSource',
                 [
-                  ...defaultdoorSource.slice(0, i),
-                  assign({}, v, { status: !v.status }),
-                  ...defaultdoorSource.slice(i + 1),
+                  ...doorSource.slice(0, i)
+                    .map(item => assign({}, item, { status: false })),
+                  assign({}, v, { status: true }),
+                  ...doorSource.slice(i + 1)
+                    .map(item => assign({}, item, { status: false })),
                 ],
               ),
             )
@@ -59,7 +60,6 @@ LeftPart.propTypes = {
   /* eslint react/forbid-prop-types:0 */
   dispatch: PropTypes.func,
   doorSource: PropTypes.array,
-  defaultdoorSource: PropTypes.array,
   cates: PropTypes.array,
 };
 

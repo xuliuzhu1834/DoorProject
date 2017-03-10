@@ -1,8 +1,7 @@
 /**
  * Created by brook on 2017/2/27.
  */
-import React, { Component, PropTypes } from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
 import assign from 'object-assign';
 import { Tabs } from 'antd';
 import ImageCheck from './imageCheckFiltersCom';
@@ -21,11 +20,8 @@ const tabsProps = {
 
 const Filters = ({
   dispatch,
-  defaultwallSource,
   wallSource,
-  defaultdoorSource,
   doorSource,
-  defaulthandSource,
   handSource,
 }) => (
   <Tabs {...tabsProps} >
@@ -41,9 +37,11 @@ const Filters = ({
               commit(
                 'wallSource',
                 [
-                  ...defaultwallSource.slice(0, i),
-                  assign({}, v, { status: !v.status }),
-                  ...defaultwallSource.slice(i + 1),
+                  ...wallSource.slice(0, i)
+                    .map(item => assign({}, item, { status: false })),
+                  assign({}, v, { status: true }),
+                  ...wallSource.slice(i + 1)
+                    .map(item => assign({}, item, { status: false })),
                 ],
               ),
             )}
@@ -63,9 +61,11 @@ const Filters = ({
               commit(
                 'doorSource',
                 [
-                  ...defaultdoorSource.slice(0, i),
-                  assign({}, v, { status: !v.status }),
-                  ...defaultdoorSource.slice(i + 1),
+                  ...doorSource.slice(0, i)
+                    .map(item => assign({}, item, { status: false })),
+                  assign({}, v, { status: true }),
+                  ...doorSource.slice(i + 1)
+                    .map(item => assign({}, item, { status: false })),
                 ],
               ),
             )}
@@ -86,9 +86,11 @@ const Filters = ({
               commit(
                 'handSource',
                 [
-                  ...defaulthandSource.slice(0, i),
-                  assign({}, v, { status: !v.status }),
-                  ...defaulthandSource.slice(i + 1),
+                  ...handSource.slice(0, i)
+                    .map(item => assign({}, item, { status: false })),
+                  assign({}, v, { status: true }),
+                  ...handSource.slice(i + 1)
+                    .map(item => assign({}, item, { status: false })),
                 ],
               ),
             )}
@@ -105,10 +107,7 @@ Filters.propTypes = {
   /* eslint react/forbid-prop-types:0 */
   dispatch: PropTypes.func,
   wallSource: PropTypes.array,
-  defaultwallSource: PropTypes.array,
   doorSource: PropTypes.array,
-  defaultdoorSource: PropTypes.array,
-  defaulthandSource: PropTypes.array,
   handSource: PropTypes.array,
 };
 
