@@ -12,3 +12,11 @@ export const filters = id => (
   })
     .then(res => res)
 );
+export const combineSer = record => (
+  fetch('/door/combine_door', {
+    method: 'post',
+    body: JSON.stringify(record),
+  })
+    .then(res => res)
+);
+

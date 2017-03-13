@@ -46,7 +46,11 @@ class Navigation extends Component {
                 /></Button>
               </div>
               <div width={'100%'}>
-                <img alt="wall" src={bgImages('./墙3.png')} style={{ width: '100%' }} />
+                <img
+                  alt="wall"
+                  src={this.props.combinePic || bgImages('./墙3.png')}
+                  style={{ width: '100%' }}
+                />
               </div>
             </div>
             {/* 条件 */}
@@ -62,6 +66,7 @@ class Navigation extends Component {
 Navigation.propTypes = {
   dispatch: PropTypes.func,
   expandable: PropTypes.string,
+  combinePic: PropTypes.string,
 };
 
 const mapStateToProps = state => state.navigation;

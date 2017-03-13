@@ -2,6 +2,7 @@
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const webpack = require('webpack');
+process.env.NODE_ENV = 'production';
 module.exports = {
   entry: {
     app: ['./src/entry.jsx'],

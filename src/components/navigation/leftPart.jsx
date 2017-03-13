@@ -19,7 +19,6 @@ const doorsImages = require.context('./images/doors');
 const LeftPart = ({
   expandable,
   dispatch,
-  doorSource,
   cates,
 }) => (
   <div
@@ -35,35 +34,23 @@ const LeftPart = ({
     </div>
     <div style={{ overflow: 'auto', width: '100%' }}>
       {
-        doorSource.map((v, i) => (
-          <Doors
-            key={i}
-            link={doorsImages(`./${v.link}`)}
-            text={v.text}
-            status={v.status}
-            onClick={() => dispatch(
-              commit(
-                'doorSource',
-                [
-                  ...doorSource.slice(0, i)
-                    .map(item => assign({}, item, { status: false })),
-                  assign({}, v, { status: true }),
-                  ...doorSource.slice(i + 1)
-                    .map(item => assign({}, item, { status: false })),
-                ],
-              ),
-            )
-            }
-          />
-        ))
-      }
-      {
         cates ? cates.map((v, i) => (
           <Doors
             key={i}
-            link={v.path}
+            link={v.value}
             text={v.name}
             status={v.status}
+            onClick={() => {
+              dispatch((commit(
+                'cates',
+                [
+                  ...cates.slice(0, i).map(item => assign({}, item, { status: false })),
+                  assign({}, v, { status: true }),
+                  ...cates.slice(i + 1).map(item => assign({}, item, { status: false })),
+                ],
+              )));
+              return dispatch({ type: 'nav_filter', id: v.id });
+            }}
           />
         )) : null
       }
@@ -73,7 +60,6 @@ const LeftPart = ({
 LeftPart.propTypes = {
   /* eslint react/forbid-prop-types:0 */
   dispatch: PropTypes.func,
-  doorSource: PropTypes.array,
   cates: PropTypes.array,
   expandable: PropTypes.string,
 };
