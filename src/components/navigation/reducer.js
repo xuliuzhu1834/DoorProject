@@ -7,6 +7,7 @@ const defaultState = {
   expandable: 'expand',
   cates: [],
   filters: [],
+  filterLoad: false,
 };
 
 export default (state = defaultState, action) => {
@@ -23,6 +24,10 @@ export default (state = defaultState, action) => {
       return assign({}, state, {
         cates: action.data.map(v => assign({}, v, { status: false })),
       });
+    case 'nav_filter':
+      return assign({}, state, {
+        filterLoad: true,
+      });
     case 'nav_filter_success':
       return assign({}, state, {
         filters: action.data
@@ -31,6 +36,7 @@ export default (state = defaultState, action) => {
             v,
             { attribute_value: v.attribute_value.map(k => assign({}, k, { status: false })) },
             )),
+        filterLoad: false,
       });
     case 'nav_combine_success':
       return assign({}, state, {
