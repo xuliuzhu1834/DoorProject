@@ -8,6 +8,7 @@ const defaultState = {
   cates: [],
   filters: [],
   filterLoad: false,
+  combineLoad: false,
 };
 
 export default (state = defaultState, action) => {
@@ -38,9 +39,18 @@ export default (state = defaultState, action) => {
             )),
         filterLoad: false,
       });
+    case 'nav_combine':
+      return assign({}, state, {
+        combineLoad: true,
+      });
     case 'nav_combine_success':
       return assign({}, state, {
         combinePic: action.data,
+        combineLoad: false,
+      });
+    case 'nav_combine_fail':
+      return assign({}, state, {
+        combineLoad: false,
       });
     default:
       return state;

@@ -47,11 +47,13 @@ class Navigation extends Component {
                   /></Button>
                 </div>
                 <div width={'100%'}>
-                  <img
-                    alt="wall"
-                    src={this.props.combinePic || bgImages('./墙3.png')}
-                    style={{ height: '550px' }}
-                  />
+                  <Spin spinning={this.props.combineLoad}>
+                    <img
+                      alt="wall"
+                      src={this.props.combinePic || bgImages('./墙3.png')}
+                      style={{ height: '550px' }}
+                    />
+                  </Spin>
                 </div>
               </div>
               {/* 条件 */}
@@ -70,6 +72,7 @@ Navigation.propTypes = {
   expandable: PropTypes.string,
   combinePic: PropTypes.string,
   filterLoad: PropTypes.bool,
+  combineLoad: PropTypes.bool,
 };
 
 const mapStateToProps = state => state.navigation;
